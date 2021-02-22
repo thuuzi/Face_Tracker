@@ -16,6 +16,7 @@ import re
 import dlib
 import pid
 import PWMServo
+from config import *
 
 #part 0:preparation
 
@@ -49,7 +50,7 @@ servo2_pid4 = pid.PID(P=0.8, I=0.5, D=0.01)
 
 #part 1:face recognition
 
-DNN = "TF"
+
 if DNN == "CAFFE":
     modelFile = "/home/pi/VisionPi/models/res10_300x300_ssd_iter_140000_fp16.caffemodel"
     configFile = "/home/pi/VisionPi/models/deploy.prototxt"
@@ -58,7 +59,7 @@ else:
     modelFile = "/home/pi/VisionPi/models/opencv_face_detector_uint8.pb"
     configFile = "/home/pi/VisionPi/models/opencv_face_detector.pbtxt"
     net = cv2.dnn.readNetFromTensorflow(modelFile, configFile)
-conf_threshold = 0.4
+
 count = 0
 
 import face_recognition
@@ -152,7 +153,7 @@ def face_track(frame):
 
     img_center_y = 60 
     img_center_x = 80
-    if track and max_area != 0: 
+    if max_area != 0: 
         center_x, center_y = (max_face[0] + int((max_face[2] - max_face[0]) / 2), max_face[1] + int((max_face[3] - max_face[1]) /2)) 
         
 

@@ -6,9 +6,9 @@ import time
 from face_reg import *
 import queue
 import PWMServo
+from config import *
 
 
-debug=False
 mode=-1
 frame_copy=image=None
 cap=''
@@ -87,7 +87,6 @@ threading.Thread(target=camera_task,daemon=True).start()
 
 if __name__=='__main__':
     camera_open()
-    debug=True
     mode=0
 
     interrupt = False
