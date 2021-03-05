@@ -60,6 +60,7 @@ else:
     configFile = "/home/pi/VisionPi/models/opencv_face_detector.pbtxt"
     net = cv2.dnn.readNetFromTensorflow(modelFile, configFile)
 
+
 count = 0
 
 import face_recognition
@@ -70,7 +71,7 @@ def detectFaceOpenCVDnn(frame):
     frameOpencvDnn = frame
     frameHeight = frameOpencvDnn.shape[0]
     frameWidth = frameOpencvDnn.shape[1]
-    blob = cv2.dnn.blobFromImage(frameOpencvDnn, 2, (150, 150), [104, 117, 123], False, False)
+    blob = cv2.dnn.blobFromImage(frameOpencvDnn, 2, (150,150), [104, 117, 123], False, False)
     net.setInput(blob)
     detections = net.forward()
     bboxes = []
